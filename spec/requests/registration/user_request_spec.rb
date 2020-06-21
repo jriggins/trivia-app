@@ -5,11 +5,17 @@ RSpec.describe Registration::UsersController, type: :request do
     context 'with valid input params' do
       it 'creates a User' do
         headers = { 'CONTENT_TYPE': 'application/json' }
-        params = {}
+        params = {
+          user: {
+            username: 'test@example.com',
+            password: 'P@ssw0rd!'
+          }
+        }
 
-        post(registration_users_path, params: params, headers: headers)
+        post(registration_users_path, params: params.to_json, headers: headers)
 
         expect(response.status).to eq(200)
+        expect(Registration::User.count).to eq(1)
       end
     end
 

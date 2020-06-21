@@ -1,10 +1,16 @@
-class Registration::UsersController < ApplicationController
-  def create
-    render(json: {})
-  end
+module Registration
+  class UsersController < ApplicationController
+    def create
+      User.create(**create_params)
+      render(json: {})
+    end
 
-  private
+    private
 
-  def create_params
+    def create_params
+      params
+        .require(:user)
+        .permit(:username, :password)
+    end
   end
 end
