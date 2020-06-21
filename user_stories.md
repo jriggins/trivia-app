@@ -19,7 +19,6 @@
 ### Use Cases
 
 1. Game Creation
-    1. Game Admin registers
     1. Game Admin creates Game
     1. Game Admin creates Game Round
     1. Game Admin adds Question to Game Round
